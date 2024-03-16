@@ -38,7 +38,7 @@
             <div v-if="typeList === 'div'" class="list-container__item__actions">
               <el-tooltip content="Скачать фрагмент" placement="top">
                 <a
-                  :href="getFileLink(`fragment/${book.fragmentFileName}`)"
+                  :href="getFileLink(`fragment/${book.fullFileName}`)"
                   download
                 >
                   <ElButton
@@ -123,7 +123,10 @@ export default {
       this.editBook(book)
     },
     getFileLink(lnk){
-      return `@/assets/${lnk}`
+      if (lnk === 'full/' || lnk == 'fragment/')
+        return null
+      else 
+        return `@/assets/${lnk}`
     }
   }
 }
